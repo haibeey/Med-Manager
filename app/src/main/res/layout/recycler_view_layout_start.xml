@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:elevation="@dimen/two_hundred"
+    android:layout_marginRight="1dp"
+    android:layout_marginLeft="1dp"
+    android:layout_width="match_parent"
+    android:background="@color/cardview_light_background"
+    android:layout_height="@dimen/three_hundred">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:paddingRight="@dimen/fifty"
+        android:id="@+id/setMonth"
+        android:textSize="30dp"
+        android:text="Month"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:layout_marginRight="@dimen/fifty"
+        android:background="@drawable/categorizer_button"
+        android:visibility="gone"
+        android:layout_marginBottom="@dimen/fab_margin"
+        android:layout_height="@dimen/fifty" />
+
+    <RelativeLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_marginLeft="@dimen/twenty_five"
+            style="@style/vertical"/>
+        <ImageView
+            android:layout_width="@dimen/fifty"
+            android:layout_alignRight="@+id/date"
+            android:layout_below="@+id/description"
+            android:id="@+id/delete"
+            android:layout_marginTop="@dimen/fourteen"
+            android:layout_marginRight="@dimen/fab_margin"
+            android:src="@drawable/ic_delete_black_24px"
+            android:layout_height="@dimen/thirty" />
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/fifty"
+            android:layout_marginTop="5dp"
+            android:id="@+id/title_holder"
+            android:elevation="@dimen/two_hundred"
+            android:layout_marginRight="@dimen/fab_margin"
+            android:layout_height="@dimen/fifty">
+            <TextView
+                android:layout_width="match_parent"
+                android:id="@+id/title"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:textColor="@color/colorAccent"
+                android:text="jnjf"
+                android:gravity="center"
+                android:textSize="@dimen/twenty"
+                android:layout_height="@dimen/fifty" />
+
+        </android.support.v7.widget.CardView>
+
+
+        <TextView
+            android:layout_below="@+id/title_holder"
+            android:layout_width="match_parent"
+            android:id="@+id/description"
+            android:textStyle="bold"
+            android:textSize="@dimen/twenty"
+            android:layout_marginLeft="@dimen/fifty"
+            android:layout_marginRight="@dimen/fab_margin"
+            android:layout_marginTop="@dimen/fab_margin"
+            android:layout_marginBottom="@dimen/fab_margin"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_below="@+id/description"
+            android:layout_width="match_parent"
+            android:id="@+id/date"
+            android:textColor="#FF1744"
+            android:textStyle="normal"
+            android:layout_marginTop="@dimen/fab_margin"
+            android:text="bdshbhsh"
+            android:textSize="@dimen/twenty"
+            android:layout_marginBottom="@dimen/fifty"
+            android:layout_marginLeft="@dimen/fifty"
+            android:layout_marginRight="@dimen/fab_margin"
+            android:layout_height="@dimen/thirty" />
+
+    </RelativeLayout>
+</LinearLayout>

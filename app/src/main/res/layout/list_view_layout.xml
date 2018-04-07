@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_height="@dimen/nav_header_height"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/title"
+            android:textStyle="italic"
+            android:textSize="@dimen/twenty"
+            android:layout_marginLeft="@dimen/fifty"
+            android:layout_marginRight="@dimen/fab_margin"
+            android:layout_below="@+id/delete"
+            android:layout_height="@dimen/fifty" />
+
+        <TextView
+            android:layout_below="@+id/title"
+            android:layout_width="match_parent"
+            android:id="@+id/description"
+            android:textStyle="italic"
+            android:textSize="@dimen/twenty"
+            android:layout_marginLeft="@dimen/fifty"
+            android:layout_marginRight="@dimen/fab_margin"
+            android:layout_height="@dimen/fifty" />
+
+        <TextView
+            android:layout_below="@+id/description"
+            android:layout_width="match_parent"
+            android:id="@+id/date"
+            android:textStyle="bold"
+            android:textSize="@dimen/fifteen"
+            android:layout_marginLeft="@dimen/fifty"
+            android:layout_marginRight="@dimen/fab_margin"
+            android:layout_height="@dimen/fifty" />
+    </RelativeLayout>
+    <View
+        android:layout_marginBottom="2dp"
+        style="@style/horizontal_"/>
+</LinearLayout>

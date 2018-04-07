@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "303833112554",
+    "firebase_url": "https://medmanager-23dad.firebaseio.com",
+    "project_id": "medmanager-23dad",
+    "storage_bucket": "medmanager-23dad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303833112554:android:8ab780943b7df591",
+        "android_client_info": {
+          "package_name": "com.haibeey.android.medmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "303833112554-m8r5800b2tp3vh1akbmrsiekvh2rs0c7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.haibeey.android.medmanager",
+            "certificate_hash": "cf9b7b5e1631add44351e50b121281186b818321"
+          }
+        },
+        {
+          "client_id": "303833112554-gbug4slrv2en8kdmg7tgg8ad3j2ta4o0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1j-GBYtFJVsjmIiRCQPHri3dWBC01v4k"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "303833112554-gbug4slrv2en8kdmg7tgg8ad3j2ta4o0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
