@@ -26,6 +26,7 @@
     <string name="data_inserted">New Med Record Inserted</string>
     <string name="search_title">Search Records</string>
     <string name="search_hint">Search</string>
+    <string name="log_out">Log Out</string>
 
     <!--navigation items-->
     <string name="search">Search</string>

@@ -306,8 +306,7 @@ public class SetMedicationFragment extends Fragment {
 
     }
 
-
     public interface DataInserted{
-        public void NewDataInserted();
+        void NewDataInserted();
     }
 }

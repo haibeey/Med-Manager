@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -49,8 +50,6 @@ public class ProfileActivity extends AppCompatActivity {
     View.OnClickListener SaveDataButtonListener=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Log.e("whatwhat","abbbb");
-            EditText editTextEmail=(EditText)findViewById(R.id.email_edit_text);
             EditText editTextUsername=(EditText)findViewById(R.id.username_edit_text);
             EditText editTextFirstName=(EditText)findViewById(R.id.first_name_edit_text);
             EditText editTextLastName=(EditText)findViewById(R.id.last_name_edit_text);
@@ -59,7 +58,7 @@ public class ProfileActivity extends AppCompatActivity {
             UserProfile.setFirstName(editTextFirstName.getText().toString());
             UserProfile.setUsername(editTextUsername.getText().toString());
             UserProfile.setLastName(editTextLastName.getText().toString());
-            UserProfile.setEmail(editTextEmail.getText().toString());
+            UserProfile.setEmail(user.getEmail());
             //update the user profile
             UpdateProfile(UserProfile);
         }
@@ -71,6 +70,7 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //getActionBar().setDisplayHomeAsUpEnabled(true);
         //declare the fire base Methods
         DeclareFireBase();
@@ -96,16 +96,19 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void fillUpDataItems(){
 
-        EditText editTextEmail=(EditText)findViewById(R.id.email_edit_text);
         EditText editTextUsername=(EditText)findViewById(R.id.username_edit_text);
         EditText editTextFirstName=(EditText)findViewById(R.id.first_name_edit_text);
         EditText editTextLastName=(EditText)findViewById(R.id.last_name_edit_text);
         CircleImageView circleImageView=(CircleImageView)findViewById(R.id.profile_view);
+        TextView textViewFullName=(TextView)findViewById(R.id.full_name);
+        TextView textViewEmail=(TextView)findViewById(R.id.email_text_view);
 
-        editTextEmail.setText(UserProfile.getEmail());
+        Log.e("emeil",UserProfile.getEmail()+" "+user.getEmail());
         editTextUsername.setText(UserProfile.getUsername());
         editTextFirstName.setText(UserProfile.getFirstName());
         editTextLastName.setText(UserProfile.getLastName());
+        textViewFullName.setText(UserProfile.getLastName()+" "+UserProfile.getFirstName());
+        textViewEmail.setText(user.getEmail());
 
         Glide.with(this /* context */)
                 .using(new FirebaseImageLoader())

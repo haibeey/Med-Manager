@@ -108,7 +108,8 @@ public class AdapterForSearchItems extends RecyclerView.Adapter<AdapterForSearch
         public void bind(final MedRecord medRecord){
             title.setText(medRecord.getNAME());
             description.setText(medRecord.getDESCRIPTION());
-            date.setText("Ends on "+medRecord.getEndDate());
+            if(medRecord.getEND_YEAR()!=0)
+                date.setText("Ends on "+medRecord.getEndDate());
 
         }
     }

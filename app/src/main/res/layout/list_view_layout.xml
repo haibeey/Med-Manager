@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_height="@dimen/nav_header_height"
+<LinearLayout android:layout_height="wrap_content"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
+    android:elevation="@dimen/two_hundred"
+    android:layout_marginBottom="@dimen/ten"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <RelativeLayout
@@ -11,34 +14,36 @@
         <TextView
             android:layout_width="match_parent"
             android:id="@+id/title"
-            android:textStyle="italic"
+            android:textStyle="bold"
+            android:text="abcde"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
             android:textSize="@dimen/twenty"
-            android:layout_marginLeft="@dimen/fifty"
             android:layout_marginRight="@dimen/fab_margin"
             android:layout_below="@+id/delete"
-            android:layout_height="@dimen/fifty" />
+            android:layout_height="@dimen/twenty_five" />
 
         <TextView
             android:layout_below="@+id/title"
             android:layout_width="match_parent"
             android:id="@+id/description"
             android:textStyle="italic"
+            android:layout_centerHorizontal="true"
+            android:text="bhsbhh suhsjuhsuhs  suhsuhsjhus"
             android:textSize="@dimen/twenty"
-            android:layout_marginLeft="@dimen/fifty"
             android:layout_marginRight="@dimen/fab_margin"
             android:layout_height="@dimen/fifty" />
 
         <TextView
             android:layout_below="@+id/description"
             android:layout_width="match_parent"
+            android:layout_centerHorizontal="true"
             android:id="@+id/date"
             android:textStyle="bold"
             android:textSize="@dimen/fifteen"
-            android:layout_marginLeft="@dimen/fifty"
+            android:text="bold"
             android:layout_marginRight="@dimen/fab_margin"
-            android:layout_height="@dimen/fifty" />
+            android:layout_height="@dimen/thirty" />
     </RelativeLayout>
-    <View
-        android:layout_marginBottom="2dp"
-        style="@style/horizontal_"/>
+
 </LinearLayout>

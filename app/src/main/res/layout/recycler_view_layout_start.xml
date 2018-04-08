@@ -6,22 +6,20 @@
     android:layout_marginLeft="1dp"
     android:layout_width="match_parent"
     android:background="@color/cardview_light_background"
-    android:layout_height="@dimen/three_hundred">
+    android:layout_height="250dp">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:paddingRight="@dimen/fifty"
+        android:layout_width="match_parent"
         android:id="@+id/setMonth"
         android:textSize="30dp"
         android:text="Month"
         android:textColor="@color/colorPrimaryDark"
         android:textStyle="bold"
-        android:gravity="center"
         android:layout_marginLeft="@dimen/fab_margin"
-        android:layout_marginRight="@dimen/fifty"
+        android:layout_marginRight="@dimen/onehundred"
         android:background="@drawable/categorizer_button"
-        android:visibility="gone"
-        android:layout_marginBottom="@dimen/fab_margin"
+        android:visibility="visible"
+        android:layout_marginBottom="1dp"
         android:layout_height="@dimen/fifty" />
 
     <RelativeLayout
@@ -29,7 +27,7 @@
         android:layout_height="match_parent">
 
         <View
-            android:layout_marginLeft="@dimen/twenty_five"
+            android:layout_marginLeft="@dimen/twenty"
             style="@style/vertical"/>
         <ImageView
             android:layout_width="@dimen/fifty"
@@ -42,7 +40,7 @@
             android:layout_height="@dimen/thirty" />
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_marginLeft="@dimen/fifty"
+            android:layout_marginLeft="@dimen/thirty"
             android:layout_marginTop="5dp"
             android:id="@+id/title_holder"
             android:elevation="@dimen/two_hundred"
@@ -53,7 +51,7 @@
                 android:id="@+id/title"
                 android:textStyle="bold"
                 android:layout_gravity="center"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/cardview_dark_background"
                 android:text="jnjf"
                 android:gravity="center"
                 android:textSize="@dimen/twenty"
@@ -68,7 +66,7 @@
             android:id="@+id/description"
             android:textStyle="bold"
             android:textSize="@dimen/twenty"
-            android:layout_marginLeft="@dimen/fifty"
+            android:layout_marginLeft="@dimen/twenty_five"
             android:layout_marginRight="@dimen/fab_margin"
             android:layout_marginTop="@dimen/fab_margin"
             android:layout_marginBottom="@dimen/fab_margin"
@@ -82,11 +80,11 @@
             android:textStyle="normal"
             android:layout_marginTop="@dimen/fab_margin"
             android:text="bdshbhsh"
-            android:textSize="@dimen/twenty"
-            android:layout_marginBottom="@dimen/fifty"
-            android:layout_marginLeft="@dimen/fifty"
+            android:textSize="@dimen/fifteen"
+            android:layout_marginLeft="@dimen/twenty_five"
             android:layout_marginRight="@dimen/fab_margin"
             android:layout_height="@dimen/thirty" />
-
     </RelativeLayout>
+
+
 </LinearLayout>

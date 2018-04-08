@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:foregroundGravity="center"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.haibeey.android.medmanager.ProfileActivity"
     tools:showIn="@layout/activity_profile">
@@ -18,18 +19,15 @@
             android:id="@+id/imageHolder"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:background="@color/skyblue"
-            android:elevation="@dimen/two_hundred"
-            android:layout_height="@dimen/two_hundred">
+            android:background="@color/colorPrimary"
+            android:layout_height="@dimen/two_fifty">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_view"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:src="@drawable/ic_account_circle_white"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center_horizontal" />
+                android:layout_centerHorizontal="true" />
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="@dimen/fifty"
                 android:onClick="GetImageAndUpload"
@@ -37,56 +35,51 @@
                 android:layout_alignRight="@+id/profile_view"
                 android:layout_alignBottom="@+id/profile_view"
                 android:layout_height="@dimen/fifty" />
-
+            <TextView
+                android:id="@+id/full_name"
+                android:layout_below="@+id/profile_view"
+                android:layout_width="match_parent"
+                android:textColor="@color/white"
+                android:text="Abraham Akerele"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="@dimen/thirty"
+                android:layout_height="@dimen/fifty" />
+            <TextView
+                android:textColor="@color/white"
+                android:layout_below="@+id/full_name"
+                android:id="@+id/email_text_view"
+                android:gravity="center"
+                android:textStyle="italic"
+                android:text="abrahamakerele38@gmail.com"
+                android:layout_width="match_parent"
+                android:textSize="@dimen/twenty"
+                android:layout_height="@dimen/fifty" />
         </RelativeLayout>
 
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:id="@+id/email_holder"
-        android:weightSum="1"
-        android:gravity="center"
-        android:layout_marginLeft="@dimen/fab_margin"
-        android:layout_marginTop="@dimen/fab_margin"
-        android:layout_below="@+id/imageHolder"
-        android:layout_height="50dp">
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_weight="0.9"
-            android:id="@+id/email_edit_text"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:id="@+id/nickname_holder"
+            android:weightSum="1"
+            android:layout_below="@id/imageHolder"
+            android:gravity="center"
             android:background="@color/white"
-            android:layout_height="match_parent" />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_weight="0.1"
-            android:src="@drawable/ic_mode_edit_black_24dp"
-            android:layout_height="match_parent" />
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:id="@+id/nickname_holder"
-        android:weightSum="1"
-        android:gravity="center"
-        android:layout_marginLeft="@dimen/fab_margin"
-        android:layout_marginTop="@dimen/fab_margin"
-        android:layout_below="@+id/email_holder"
-        android:layout_height="50dp">
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_weight="0.9"
-            android:background="@color/white"
-            android:id="@+id/username_edit_text"
-            android:layout_height="match_parent" />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_weight="0.1"
-            android:src="@drawable/ic_mode_edit_black_24dp"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+            android:layout_marginLeft="@dimen/fab_margin"
+            android:layout_marginTop="@dimen/fab_margin"
+            android:layout_height="50dp">
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_weight="0.9"
+                android:id="@+id/username_edit_text"
+                android:layout_height="match_parent" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_weight="0.1"
+                android:src="@drawable/ic_mode_edit_black_24dp"
+                android:layout_height="match_parent" />
+        </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -94,14 +87,14 @@
             android:id="@+id/first_name_holder"
             android:weightSum="1"
             android:gravity="center"
+            android:background="@color/white"
+            android:layout_below="@id/nickname_holder"
             android:layout_marginLeft="@dimen/fab_margin"
             android:layout_marginTop="@dimen/fab_margin"
-            android:layout_below="@+id/nickname_holder"
             android:layout_height="50dp">
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_weight="0.9"
-                android:background="@color/white"
                 android:id="@+id/first_name_edit_text"
                 android:layout_height="match_parent" />
             <ImageView
@@ -117,14 +110,14 @@
             android:layout_width="match_parent"
             android:id="@+id/last_name_holder"
             android:weightSum="1"
+            android:background="@color/white"
+            android:layout_below="@+id/first_name_holder"
             android:layout_marginLeft="@dimen/fab_margin"
             android:layout_marginTop="@dimen/fab_margin"
-            android:layout_below="@+id/first_name_holder"
             android:layout_height="50dp">
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_weight="0.9"
-                android:background="@color/white"
                 android:id="@+id/last_name_edit_text"
                 android:layout_height="match_parent" />
             <ImageView
@@ -133,17 +126,17 @@
                 android:src="@drawable/ic_mode_edit_black_24dp"
                 android:layout_height="match_parent" />
         </LinearLayout>
+
     <Button
         android:layout_below="@+id/last_name_holder"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="@dimen/fifty"
-        android:layout_marginLeft="@dimen/fifty"
-        android:layout_marginBottom="@dimen/fab_margin"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:text="@string/save"
+        android:layout_marginTop="@dimen/fifteen"
         android:id="@+id/add_some_data"
-        android:background="@drawable/save"
+        android:background="@drawable/ic_update"
+        android:layout_marginRight="@dimen/twenty"
+        android:layout_marginLeft="@dimen/twenty"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="@dimen/fifty" />
     </RelativeLayout>
 </ScrollView>

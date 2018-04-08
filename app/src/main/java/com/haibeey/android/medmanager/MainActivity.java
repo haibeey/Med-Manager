@@ -86,8 +86,6 @@ public class MainActivity extends AppCompatActivity
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView =
                 (SearchView) menu.findItem(R.id.search).getActionView();
-
-
         searchManager.setOnDismissListener(new SearchManager.OnDismissListener() {
             @Override
             public void onDismiss() {
@@ -101,6 +99,7 @@ public class MainActivity extends AppCompatActivity
         return true;
 
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -218,5 +217,4 @@ public class MainActivity extends AppCompatActivity
 
         }
     }
-    
 }

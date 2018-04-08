@@ -103,7 +103,6 @@ public class AdapterForHomeFragment extends RecyclerView.Adapter<AdapterForHomeF
     }
 
 
-
     @Override
     public int getItemCount() {
         if(medRecords!=null){

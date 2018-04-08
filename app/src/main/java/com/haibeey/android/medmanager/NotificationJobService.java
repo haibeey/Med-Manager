@@ -35,6 +35,7 @@ public class NotificationJobService extends JobService {
         //builds the notification
         Notification notification= new NotificationCompat.
                 Builder(getBaseContext()).
+                //setSound().
                 setContentIntent(resultPendingIntent).
                 setContentTitle(bundle.getString("name")).
                 setContentText(bundle.getString("description")).
