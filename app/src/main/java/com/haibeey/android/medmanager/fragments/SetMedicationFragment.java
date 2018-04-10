@@ -53,7 +53,6 @@ public class SetMedicationFragment extends Fragment {
     private static int endYear=-1;
 
     private View view;
-
     //preset to one hour
     private int interval=1;
 

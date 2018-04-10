@@ -4,6 +4,7 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.media.RingtoneManager;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
@@ -35,7 +36,7 @@ public class NotificationJobService extends JobService {
         //builds the notification
         Notification notification= new NotificationCompat.
                 Builder(getBaseContext()).
-                //setSound().
+                setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)).
                 setContentIntent(resultPendingIntent).
                 setContentTitle(bundle.getString("name")).
                 setContentText(bundle.getString("description")).

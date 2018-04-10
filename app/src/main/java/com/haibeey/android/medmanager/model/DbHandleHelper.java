@@ -54,7 +54,8 @@ public class DbHandleHelper extends SQLiteOpenHelper {
     }
 
     public void insertEntry(int startYear,int startMonth,int startDay,int startHour,int startMinute,
-                            int endYear,int endMonth,int endDay,int endHour,int endMinute,String name,String description,int interval){
+                            int endYear,int endMonth,int endDay,int endHour,int endMinute,String name,
+                            String description,int interval){
         SQLiteDatabase db=getWritableDatabase();
         ContentValues values=new ContentValues();
 
@@ -82,7 +83,8 @@ public class DbHandleHelper extends SQLiteOpenHelper {
     public ArrayList<MedRecord>  queryEntryAll(){
 
         SQLiteDatabase db=getReadableDatabase();
-        Cursor cursor=db.rawQuery("SELECT * FROM "+MedicalEntry.TABLE_NAME,null);
+        Cursor cursor=db.rawQuery("SELECT * FROM "+MedicalEntry.TABLE_NAME+" ORDER BY "
+                +MedicalEntry.COLUMN_END_MONTH+" DESC",null);
 
         ArrayList<MedRecord> resultList=new ArrayList<>();
         cursor.moveToLast();
@@ -184,9 +186,7 @@ public class DbHandleHelper extends SQLiteOpenHelper {
 
             resultList.add(medRecord);
             cursor.moveToNext();
-
         }
-
         return resultList;
     }
 }

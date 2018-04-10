@@ -5,12 +5,14 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuInflater;
+import android.view.SearchEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity
     private FirebaseAuth mFirebaseAuth;
     private RecyclerView recyclerView;//recyclerView for Search
     private boolean recyclerViewForSearchISVisible=false;
+    private Menu menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,39 +79,51 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main, menu);
+        this.menu=menu;//store the menu item for later search
+        createSearch(menu);
+        return true;
+    }
 
+
+    private void createSearch(Menu menu){
         // Associate searchable configuration with the SearchView
         SearchManager searchManager =
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView =
                 (SearchView) menu.findItem(R.id.search).getActionView();
-        searchManager.setOnDismissListener(new SearchManager.OnDismissListener() {
-            @Override
-            public void onDismiss() {
-                onBackPressed();
-            }
-        });
-
         searchView.setSearchableInfo(
                 searchManager.getSearchableInfo(getComponentName()));
-
-        return true;
-
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                onBackPressed();
+                return true;
+            }
+        });
     }
 
+    @Override
+    public boolean onSearchRequested() {
+        createSearch(menu);
+        return super.onSearchRequested();
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         int id = item.getItemId();
         if (id == R.id.search) {
             return true;
+        }else if(id==R.id.logout){
+            mFirebaseAuth.signOut();
+            finish();
+        }else if (id==android.R.id.home) {
+            onBackPressed();
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -117,7 +132,6 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         switch (id){
             case R.id.nav_search:{
                 onSearchRequested();
@@ -204,11 +218,7 @@ public class MainActivity extends AppCompatActivity
         I.putExtra(Intent.EXTRA_TEXT,"With Med Manager you will get reminded for your medication\nget it now !!");
         startActivity(I);
     }
-    private void search(){
-        Intent intent=new Intent();
-        intent.setAction(Intent.ACTION_SEARCH);
-        handleIntent(intent);
-    }
+
     private void handleIntent(Intent intent) {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);

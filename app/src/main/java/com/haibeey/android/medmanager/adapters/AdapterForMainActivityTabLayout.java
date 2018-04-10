@@ -14,8 +14,8 @@ import com.haibeey.android.medmanager.fragments.SetMedicationFragment;
 
 public class AdapterForMainActivityTabLayout  extends FragmentPagerAdapter{
 
-    HomeFragment homeFragment;
-    SetMedicationFragment setMedicationFragment;
+    private HomeFragment homeFragment;
+    private SetMedicationFragment setMedicationFragment;
 
     public AdapterForMainActivityTabLayout(FragmentManager fm) {
         super(fm);

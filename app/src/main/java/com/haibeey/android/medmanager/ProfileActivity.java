@@ -103,7 +103,6 @@ public class ProfileActivity extends AppCompatActivity {
         TextView textViewFullName=(TextView)findViewById(R.id.full_name);
         TextView textViewEmail=(TextView)findViewById(R.id.email_text_view);
 
-        Log.e("emeil",UserProfile.getEmail()+" "+user.getEmail());
         editTextUsername.setText(UserProfile.getUsername());
         editTextFirstName.setText(UserProfile.getFirstName());
         editTextLastName.setText(UserProfile.getLastName());

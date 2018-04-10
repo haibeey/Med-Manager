@@ -4,6 +4,7 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.media.RingtoneManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -48,8 +49,7 @@ public class Utils {
 
         int intervalInSecs= (int) TimeUnit.HOURS.toSeconds(Interval);
         //interval for which job should be execute three minute at most
-        int intervalForJobExecution=120;
-
+        
         Job job=dispatcher.newJobBuilder().
                 //should be a recurring job
                 setRecurring(true).
@@ -59,7 +59,7 @@ public class Utils {
                 setTag(id).
                 setExtras(bundle).
                 setService(NotificationJobService.class).
-                setTrigger(Trigger.executionWindow(intervalForJobExecution,intervalForJobExecution+intervalForJobExecution)).
+                setTrigger(Trigger.executionWindow(intervalInSecs,intervalInSecs+intervalInSecs)).
                 setLifetime(Lifetime.FOREVER).build();
 
         dispatcher.mustSchedule(job);
@@ -80,6 +80,7 @@ public class Utils {
         //builds the notification
         Notification notification= new NotificationCompat.
                 Builder(context).
+                setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)).
                 setContentTitle(context.getString(R.string.end_med_title)+name).
                 setSmallIcon(R.drawable.common_full_open_on_phone).
                 build();

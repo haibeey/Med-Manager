@@ -66,14 +66,12 @@ public class AdapterForHomeFragment extends RecyclerView.Adapter<AdapterForHomeF
     }
 
     public  void RefreshData(){
-        //fetching of data might take some time so run on another thread
+        //fetching of data might take some time  in large database so run on another thread
         new AsyncTask<Void,Void,Void>(){
             @Override
             protected Void doInBackground(Void... params) {
                 //gets the data from the database
                 medRecords=dbHandleHelper.queryEntryAll();
-                //sorts the data not in place
-                sortMedRecords();
                 return null;
 
             }
@@ -87,13 +85,11 @@ public class AdapterForHomeFragment extends RecyclerView.Adapter<AdapterForHomeF
 
     private void sortMedRecords(){
         if(medRecords==null)return;
-
         try{
             medRecords=Utils.SortList(medRecords);
         }catch (ClassCastException e){
             e.printStackTrace();
         }
-
     }
 
     @Override
@@ -118,14 +114,10 @@ public class AdapterForHomeFragment extends RecyclerView.Adapter<AdapterForHomeF
         private TextView title;//text view for title
         private ImageView delete;//Image view delete view
         private TextView description;//text view for description
-        private TextView date;
-        private View itemView;
-        private boolean isBeingRecycled=false;
+        private TextView date;//date text View
 
         public ViewHolder(View itemView) {
             super(itemView);
-            this.itemView=itemView;
-
             date=(TextView)itemView.findViewById(R.id.date);
             title=(TextView)itemView.findViewById(R.id.title);
             description=(TextView)itemView.findViewById(R.id.description);
@@ -172,7 +164,6 @@ public class AdapterForHomeFragment extends RecyclerView.Adapter<AdapterForHomeF
                 @Override
                 public void onClick(View v) {
                     //delete the record and cancel the job
-
                     dbHandleHelper.deleteFromTable(DbContract.MedicalEntry.TABLE_NAME,DbContract.MedicalEntry._ID,String.valueOf(medRecord.getID()));
                     //cancel the  job
                     Utils.CancelJob(medRecord.getID(),context);
@@ -192,7 +183,13 @@ public class AdapterForHomeFragment extends RecyclerView.Adapter<AdapterForHomeF
                 //notifies used about medical expiration
                 Utils.notifyOnWhenMedExpires(context,medRecord.getNAME());
                 //remove from med records
-                medRecords.remove(medRecord);
+                try{
+                    //when scrolling  an exception does occur when trying to update the record
+                    medRecords.remove(medRecord);
+                    notifyDataSetChanged();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
                 return true;
             }
             return false;
