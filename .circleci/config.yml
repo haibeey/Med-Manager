@@ -18,6 +18,8 @@ jobs:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
+          name: chmod permissions
+          command: chmod +x ./gradlew
           name: Run Tests
           command: ./gradlew lint test
       - store_artifacts:
