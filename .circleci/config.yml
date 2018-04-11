@@ -17,9 +17,6 @@ jobs:
           paths:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-      - run:
-          name: chmod permissions
-          command:  sudo chmod +x ./gradlew lint test
       - store_artifacts:
           path: app/build/reports
           destination: reports
