@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -47,7 +48,20 @@ public class MainActivity extends AppCompatActivity
     private FirebaseAuth mFirebaseAuth;
     private RecyclerView recyclerView;//recyclerView for Search
     private boolean recyclerViewForSearchISVisible=false;
-    private Menu menu;
+
+
+    private MenuItemCompat.OnActionExpandListener SearchListener=new MenuItemCompat.OnActionExpandListener() {
+        @Override
+        public boolean onMenuItemActionExpand(MenuItem item) {
+            return true;
+        }
+
+        @Override
+        public boolean onMenuItemActionCollapse(MenuItem item) {
+            onBackPressed();
+            return true;
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,34 +98,18 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main, menu);
-        this.menu=menu;//store the menu item for later search
-        createSearch(menu);
+        SearchManager searchManager =
+                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        MenuItem item=menu.findItem(R.id.search);
+        SearchView searchView =
+                (SearchView) item.getActionView();
+        MenuItemCompat.setOnActionExpandListener( item,SearchListener);
+        searchView.setSearchableInfo(
+                searchManager.getSearchableInfo(getComponentName()));
         return true;
     }
 
 
-    private void createSearch(Menu menu){
-        // Associate searchable configuration with the SearchView
-        SearchManager searchManager =
-                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView =
-                (SearchView) menu.findItem(R.id.search).getActionView();
-        searchView.setSearchableInfo(
-                searchManager.getSearchableInfo(getComponentName()));
-        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
-            @Override
-            public boolean onClose() {
-                onBackPressed();
-                return true;
-            }
-        });
-    }
-
-    @Override
-    public boolean onSearchRequested() {
-        createSearch(menu);
-        return super.onSearchRequested();
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -213,6 +211,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void share(){
+
         Intent I=new Intent(Intent.ACTION_SEND);
         I.setType("text/plain");
         I.putExtra(Intent.EXTRA_TEXT,"With Med Manager you will get reminded for your medication\nget it now !!");
