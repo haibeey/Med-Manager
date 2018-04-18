@@ -72,6 +72,7 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_weight="0.9"
+                android:hint="@string/username"
                 android:id="@+id/username_edit_text"
                 android:layout_height="match_parent" />
             <ImageView
@@ -95,6 +96,7 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_weight="0.9"
+                android:hint="@string/first_name"
                 android:id="@+id/first_name_edit_text"
                 android:layout_height="match_parent" />
             <ImageView
@@ -118,6 +120,7 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_weight="0.9"
+                android:hint="@string/last_name"
                 android:id="@+id/last_name_edit_text"
                 android:layout_height="match_parent" />
             <ImageView
